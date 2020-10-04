@@ -90,7 +90,7 @@ class ViewController: UIViewController {
             for result in hitResults {
                 
                 print("HIT:-> Name: \(result.node.description)")
-                print("HIT:-> description  \(result.node.name)")
+                print("HIT:-> description  \(String(describing: result.node.name))")
                 
             }
         }

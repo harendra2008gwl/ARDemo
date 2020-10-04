@@ -23,13 +23,13 @@ public struct LocationTranslation {
 }
 
 public extension CLLocation {
-    public convenience init(coordinate: CLLocationCoordinate2D, altitude: CLLocationDistance) {
+     convenience init(coordinate: CLLocationCoordinate2D, altitude: CLLocationDistance) {
         self.init(coordinate: coordinate, altitude: altitude, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: Date())
     }
     
     ///Translates distance in meters between two locations.
     ///Returns the result as the distance in latitude and distance in longitude.
-    public func translation(toLocation location: CLLocation) -> LocationTranslation {
+     func translation(toLocation location: CLLocation) -> LocationTranslation {
         let inbetweenLocation = CLLocation(latitude: self.coordinate.latitude, longitude: location.coordinate.longitude)
         
         let distanceLatitude = location.distance(from: inbetweenLocation)
@@ -60,7 +60,7 @@ public extension CLLocation {
             altitudeTranslation: altitudeTranslation)
     }
     
-    public func translatedLocation(with translation: LocationTranslation) -> CLLocation {
+     func translatedLocation(with translation: LocationTranslation) -> CLLocation {
         let latitudeCoordinate = self.coordinate.coordinateWithBearing(bearing: 0, distanceMeters: translation.latitudeTranslation)
         
         let longitudeCoordinate = self.coordinate.coordinateWithBearing(bearing: 90, distanceMeters: translation.longitudeTranslation)
@@ -86,7 +86,7 @@ extension Double {
 }
 
 public extension CLLocationCoordinate2D {
-    public func coordinateWithBearing(bearing:Double, distanceMeters:Double) -> CLLocationCoordinate2D {
+     func coordinateWithBearing(bearing:Double, distanceMeters:Double) -> CLLocationCoordinate2D {
         //The numbers for earth radius may be _off_ here
         //but this gives a reasonably accurate result..
         //Any correction here is welcome.
